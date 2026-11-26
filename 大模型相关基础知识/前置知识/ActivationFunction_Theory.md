@@ -25,10 +25,10 @@ $x^{(2)}$  y = 正   $p = 1$  $\hat{p} = \theta^Tx^{(2)}$
 ### odds【几率】
 
 $$
-odds=\frac{p}{1-p} \in (0, +\infty)
+\text{odds}=\frac{p}{1-p} \in (0, +\infty)
 $$
 
-为了使得概率 $p$ 能变换匹配**线性**函数值域 $(-\infty, +\infty)$ ，**对odds几率取对数**，得到对数几率： $\log(odds)\in(-\infty, +\infty)$
+为了使得概率 $p$ 能变换匹配**线性**函数值域 $(-\infty, +\infty)$ ，**对 odds 几率取对数**，得到对数几率： $\log(\text{odds})\in(-\infty, +\infty)$
 
 $$
 \begin{aligned}
@@ -115,8 +115,11 @@ $$
 注意：$\frac{\partial \theta^Tx^{(i)}}{\partial \theta_j}$ 可以理解成第i个样本第j个参数 $\theta$ 对应的特征值 $x_j^{(i)}$
 
 $$
-\frac{\partial \theta^Tx^{(i)}}{\partial \theta_j}=
-\frac{\partial \left(\theta_0+\theta_1x_1+\cdots+\theta_ix_i\right)}{\partial \theta_j} = x_j^{(i)}
+\begin{aligned}
+\frac{\partial \theta^Tx^{(i)}}{\partial \theta_j}
+&= \frac{\partial \left(\theta_0+\theta_1x_1+\cdots+\theta_ix_i\right)}{\partial \theta_j} \\
+&= x_j^{(i)}
+\end{aligned}
 $$
 
 因此，$\ell(\theta)$ 求导可以进一步优化：
@@ -176,8 +179,8 @@ $$
 
 $$
 \hat y=\begin{cases}
-1,\ p\geq threshold\\
-0,\ p< threshold
+1,\ p\geq \text{threshold}\\
+0,\ p< \text{threshold}
 \end{cases}
 $$
 
@@ -286,9 +289,11 @@ $$
 - **在目标函数里的作用**：内层 $\sum_{j=1}^{k}$ 形式上对 $k$ 类各写一项，但 $I$ 把非真实类全部乘成 $0$，只留真实类：
 
 $$
+\begin{aligned}
 \sum_{j=1}^{k} I\left(y^{(i)} = j\right) \cdot \ln p_j^{(i)}
-= \ln p_{y^{(i)}}^{(i)}
-= \ln P\big(y=y^{(i)} \mid x^{(i)};\theta\big)
+&= \ln p_{y^{(i)}}^{(i)} \\
+&= \ln P\big(y=y^{(i)} \mid x^{(i)};\theta\big)
+\end{aligned}
 $$
 
 即 $I$ 是 **「只取真实类概率的对数」** 的开关；最小化 $J(\theta)$ 等价于让每个样本的真实类预测概率尽量大。
